@@ -1,0 +1,16 @@
+---
+# configuring fail2ban
+
+- name: " Setup | adding trusted networks "
+  template:
+    src: customban.j2
+    dest: "{{ fail2banpwd }}/{{ customfile }}"
+    owner: root
+    group: root
+    mode: 0644
+  notify: [ 'start f2ban' ]
+  when: 
+  - ansible_distribution == "CentOS"
+  - customban
+
+  

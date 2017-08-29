@@ -1,0 +1,46 @@
+---
+# defaults file for fail2ban
+#
+# customban: Set this to false if you dont want use a custom template
+# 
+# customfile: the name of the customfile, by default it will be copied to "/etc/fail2ban/jail.d/"
+# 
+# packs: is the packages to be installed with this role
+#
+# services: Is used on custom.j2 template to build the custom fail2ban jail file. 
+# This role will be called on your system by name-custom, so if you want list custom roles you can  use client e.g:
+#
+# $fail2ban-client status ssh-custom
+#
+#
+# You need to define all variables on services folowed by:
+# 
+# name: the name of the rule
+# filter: define a filter to use. (List filters on /etc/fail2ban/filter.d )
+# majorname: the description name for this jail
+# port: which port you are using
+# protocol: by default is tcp
+# dest: this is the destination account for alerts
+# email: the sender address of alerts
+# retry: max number of retry
+# bantime: how many time to be banned in seconds
+#
+#
+customban: true
+
+customfile: "01-customban.conf"
+
+packs:
+  - fail2ban-all
+
+services:
+  - name: ssh
+    filter: sshd
+    majorname: SSH
+    port: 1022
+    protocol: tcp
+    dest: root
+    email: root@localhost
+    retry: 3
+    bantime: 3600
+

@@ -1,0 +1,16 @@
+galaxy_info:
+  author: isca
+  description: "Deploy and create a simple fail2ban jails as fast as you can..."
+  company: "isca.space"
+  license: "license (LGPL-3.0)"
+  min_ansible_version: 2.1
+  platforms:
+    - name: EL
+      versions:
+        - 7
+  galaxy_tags:
+    - fail2ban
+    - jail
+    - iptables
+    - security
+    - centos

@@ -1,0 +1,11 @@
+---
+# Installing fail2ban
+
+- name: "Install | installing fail2ban "
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ packs }}"
+  when: 
+    - ansible_distribution == "CentOS"
+

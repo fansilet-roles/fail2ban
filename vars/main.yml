@@ -1,0 +1,7 @@
+---
+# vars file for fail2ban
+
+fail2banpwd: "/etc/fail2ban/jail.d"
+fail2banlog: "/var/log/secure"
+
+
