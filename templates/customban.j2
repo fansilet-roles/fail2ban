@@ -17,7 +17,7 @@ maxretry = {{ item.retry }}
 bantime = {{ item.bantime }}
 enabled = true
 filter = {{ item.filter }}
-action = iptables[name={{ item.majorname }}, port={{ item.port }}, protocol={{ item.protocol }}]
+action = iptables-multiport[name={{ item.majorname }}, port={{ item.port }}, protocol={{ item.protocol }}]
          sendmail-whois[name={{ item.majorname }}, dest={{ dest }}, sender={{ sender }}]
 logpath = {{ fail2banlog }}
 
