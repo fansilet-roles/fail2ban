@@ -1,6 +1,15 @@
 ---
 # Installing fail2ban
 
+- name: " Install | installing repo dependencies "
+  yum:
+    name: epel-release
+    state: present
+    update_cache: true
+  when: 
+    - ansible_distribution == "CentOS"
+
+
 - name: "Install | installing fail2ban "
   yum:
     name: "{{ item }}"

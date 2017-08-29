@@ -4,21 +4,23 @@
 ignoreip = {{ ips }}
 {% endfor %}
 
-
 # A host is banned if it has generated "maxretry" during the last "findtime"
 # seconds.
 findtime = 600
 
+# "maxretry" is the number of failures before a host get banned.
+# "bantime" is the number of seconds that a host is banned.
 
 {% for item in services %}
 [{{ item.name }}-custom]
-# "maxretry" is the number of failures before a host get banned.
 maxretry = {{ item.retry }}
-# "bantime" is the number of seconds that a host is banned.
 bantime = {{ item.bantime }}
 enabled = true
 filter = {{ item.filter }}
 action = iptables[name={{ item.majorname }}, port={{ item.port }}, protocol={{ item.protocol }}]
-         sendmail-whois[name={{ item.majorname }}, dest={{ item.dest }}, senser={{ item.email }}]
+         sendmail-whois[name={{ item.majorname }}, dest={{ dest }}, sender={{ sender }}]
 logpath = {{ fail2banlog }}
+
+
 {% endfor %}
+

@@ -4,9 +4,9 @@
 - name: " Handler | Loading fail2ban service "
   service:
     name: fail2ban
-    state: started
+    state: restarted
     enabled: yes
   register: f2banRestarted
-  listen: 'start f2ban'
+  listen: 'restart f2ban'
 
 

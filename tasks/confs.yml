@@ -8,7 +8,8 @@
     owner: root
     group: root
     mode: 0644
-  notify: [ 'start f2ban' ]
+  notify: [ 'restart f2ban' ]
+  with_items: "{{ services }}"
   when: 
   - ansible_distribution == "CentOS"
   - customban

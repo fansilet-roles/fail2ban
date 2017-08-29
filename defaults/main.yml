@@ -12,6 +12,8 @@
 #
 # $fail2ban-client status ssh-custom
 #
+# dest: this is the destination account for alerts
+# sender: the sender address of alerts
 #
 # You need to define all variables on services folowed by:
 # 
@@ -20,15 +22,15 @@
 # majorname: the description name for this jail
 # port: which port you are using
 # protocol: by default is tcp
-# dest: this is the destination account for alerts
-# email: the sender address of alerts
 # retry: max number of retry
 # bantime: how many time to be banned in seconds
 #
 #
 customban: true
-
 customfile: "01-customban.conf"
+
+dest: myemail@gmail.com
+sender: root@localhost
 
 packs:
   - fail2ban-all
@@ -39,8 +41,6 @@ services:
     majorname: SSH
     port: 1022
     protocol: tcp
-    dest: root
-    email: root@localhost
     retry: 3
     bantime: 3600
 
